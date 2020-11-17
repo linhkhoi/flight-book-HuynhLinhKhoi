@@ -16,6 +16,12 @@ class FlightBaseView(ModelView):
     #can_export = False
     can_export = True
 
+    def is_accessible(self):
+
+        # set accessibility...
+        if not current_user.is_active or not current_user.is_authenticated:
+            return False
+
     def _handle_view(self, name, **kwargs):
         """
         Override builtin _handle_view in order to redirect users when a view is not accessible.
