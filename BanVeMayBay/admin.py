@@ -6,14 +6,12 @@ from flask_login import current_user, logout_user
 from BanVeMayBay.models import *
 
 
-
 # Create customized model view class
 class FlightBaseView(ModelView):
 
     column_display_pk = True
     page_size = 20
     can_view_details = True
-    #can_export = False
     can_export = True
 
     def is_accessible(self):
@@ -44,7 +42,7 @@ class regularFlightView(FlightBaseView):
             return False
 
         # roles not tied to ascending permissions...
-        if  not current_user.has_role('export'):
+        if not current_user.has_role('export'):
             self.can_export = False
 
         # roles with ascending permissions...
@@ -74,8 +72,6 @@ class regularFlightView(FlightBaseView):
             self.can_edit = False
             self.can_delete = False
             return True
-        if current_user.has_role('customer'):
-            return True
         return False
 
 
@@ -87,10 +83,10 @@ class SuperView(FlightBaseView):
         if not current_user.is_active or not current_user.is_authenticated:
             return False
         if current_user.has_role('adminrole'):
+            self.column_display_pk = True
             self.can_create = True
             self.can_edit = True
             self.can_delete = True
-            #self.can_export = True
             return True
         return False
 
@@ -126,8 +122,8 @@ class LogoutView(BaseView):
 
 class UserView(SuperView):
     can_view_details = True
-    column_list = ['first_name', 'last_name', 'username', 'password', 'roles', 'active']
-    column_default_sort = ('last_name', False)
+    column_list = ['id', 'first_name', 'last_name', 'username', 'password', 'roles', 'active']
+    column_default_sort = ('id', False)
     column_filters = [
         'first_name',
         'last_name',

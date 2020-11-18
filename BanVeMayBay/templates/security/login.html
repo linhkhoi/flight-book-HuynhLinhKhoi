@@ -26,9 +26,14 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/util.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
 <!--===============================================================================================-->
+	{% block head %}
+			{% include 'base/head.html' %}
+			{% endblock %}
 </head>
 <body>
-
+{% block header %}
+			{% include 'base/header.html' %}
+			{% endblock %}
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('{{ url_for('static', filename='images/bg-01.jpg') }}');">
 			<div class="wrap-login100">

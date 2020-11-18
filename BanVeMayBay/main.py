@@ -38,7 +38,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         return render_template('security/login.html')
-    return render_template('register.html')
+    return render_template('security/register.html')
 
 
 @app.route('/index')
