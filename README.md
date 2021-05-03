@@ -1,3 +1,3 @@
 # flight-book-HuynhLinhKhoi
-Bài tập lớn môn kiểm thử:
-Sử dụng công nghệ: Python, Flask Framework
+-Bài tập lớn môn Công nghệ phần mềm
+-Sử dụng công nghệ: Python, Flask Framework
